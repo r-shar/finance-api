@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Checker</title>
+</head>
+<body>
+    <h1>Stock Price Checker</h1>
+    <form method="post">
+        <label>Enter Stock Symbol:</label>
+        <input type="text" name="symbol" required>
+        <button type="submit">Check</button>
+    </form>
+
+    {% if stock_data %}
+    {% if stock_data.error %}
+        <p style="color: red;">{{ stock_data.error }}</p>
+    {% else %}
+        <p><strong>{{ stock_data.datetime }}</strong></p>
+        <p>{{ stock_data.company }} ({{ stock_data.symbol }})</p>
+        <p>{{ stock_data.price }} {{ stock_data.change }} ({{ stock_data.percent }})</p>
+        {% endif %}
+    {% endif %}
+
+</body>
+</html>
